@@ -1,9 +1,9 @@
 apiVersion: apps/v1
-kind: Deployment
+kind:  StatefulSet
 metadata:
   name: apptitou
 spec:
- # serviceName: apptitou
+  serviceName: "apptitou"
   selector:
     matchLabels:
       app: apptitou
