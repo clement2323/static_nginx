@@ -1,17 +1,17 @@
 apiVersion: apps/v1
 kind:  StatefulSet
 metadata:
-  name: apptitou
+  name: apptitou2
 spec:
-  serviceName: "apptitou"
+  serviceName: "apptitou2"
   selector:
     matchLabels:
-      app: apptitou
+      app: apptitou2
   replicas: 1
   template: # je mets des labels sur les pods-> le déploiement donenra naissance à des pods auxquels le label nginxlabel1 sera donné
     metadata:
       labels:
-        app: apptitou
+        app: apptitou2
     spec:
       volumes:
         - name: volumepartage # verif de la disponibilité de la pvc
@@ -32,6 +32,9 @@ spec:
           imagePullPolicy: Always
           #mc alias set myminio https://myminio.example.net minioadminuser minioadminpassword
           command: ["mc"]
+          #args: ["cp","s3/cguillo/story_titou/index.html","dossierimage/index.html"]
+          # je  copie ici le pdf en dur pour la version pour ordi !
+          # la version mobile ne nécessitye qu'une modif du pdf
           args: ["cp", "--recursive","s3/cguillo/story_titou/","dossierimage"]
           #env:
            # - name: MC_HOST_s3
